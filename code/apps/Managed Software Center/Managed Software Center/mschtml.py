@@ -314,7 +314,7 @@ def build_list_page(category=None, developer=None, filter=None):
     page['category_items'] = categories_html
     page['category_list'] = categories_html_list
     page['header_text'] = header
-    if category or filter or developer:
+    if filter or developer:
         showcase = ''
     else:
         showcase = get_template('showcase_template.html', raw=True)
@@ -423,9 +423,10 @@ def build_categories_page():
     page['list_items'] = item_html
     page['category_items'] = categories_html
     page['header_text'] = header
+    showcase = get_template('showcase_template.html', raw=True)
     
     footer = get_template('footer_template.html', raw=True)
-    generate_page(page_name, 'list_template.html', page, showcase=u'', sidebar=u'', footer=footer)
+    generate_page(page_name, 'list_template.html', page, showcase=showcase, sidebar=u'', footer=footer)
 
 
 def build_category_items_html():
